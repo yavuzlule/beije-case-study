@@ -1,6 +1,6 @@
 import Feed from "@components/Feed"
 import SliderList from "@components/SliderList"
-
+import Basket from "@components/Basket"
 
 
 const Home = () => {
@@ -42,9 +42,15 @@ const Home = () => {
       </p>
 
       <Feed />
-      <div className="w-1/2">
-        <SliderList className="slider" items={pads} />
+      <div className="flex">
+        <div className="w-1/2">
+          <SliderList className="slider" items={pads} />
+        </div>
+        <div className="w-1/2 head_text">
+          <Basket cl></Basket>
+        </div>
       </div>
+      
             
 
 
