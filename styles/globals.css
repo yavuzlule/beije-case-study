@@ -94,6 +94,55 @@
   background-color: black;
 }
 
+.basket {
+  background-color: white;
+  margin: 0px 100px 0px 100px ;
+  padding: 40px;
+  height: auto;
+  border-radius: 30px;
+}
+
+.title-1 {
+  font-size: 32px;
+}
+
+.tag{
+  margin: 0px 0px 10px 0px;
+  padding: 15px;
+  border-radius: 5px;
+}
+.title-2{
+  font-size: 20px;
+  margin: 0 0px 0px 15px;
+}
+
+.purchase-button{
+  font-weight: bolder;
+  width: 500px;
+  height: 50px;
+  border-radius:50px;
+  background-color: black;
+  color: white;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.purchase-button-disabled{
+  font-weight:bolder;
+  width: 500px;
+  height: 50px;
+  border-radius:50px;
+  background-color: rgb(226, 226, 226);
+  color: rgb(181, 181, 181);
+  align-items: center;
+  margin-top: 20px;
+}
+.products {
+  width: 500px;
+  height:auto;
+  margin: 20px;
+  padding: 20px;
+}
 @media screen and (max-width: 640px) {
   .main {
     padding: 0;
