@@ -1,6 +1,5 @@
 import '@styles/globals.css';
 import Nav from '@components/Nav';
-import Provider from '@components/Provider';
 
 
 
@@ -13,9 +12,9 @@ const RootLayout = ({children}) => {
   return (
     <html lang='tr'>
       <body>
-        <div className='beije'>
+        <div className='beije home'>
 
-          <main className='app beije'>
+          <main className='app beije w-full'>
             <Nav />
             {children}
           </main>

@@ -6,7 +6,7 @@ import AddToBasketButton from "./AddToBasketButton"
 
 const Basket = ({value}) => {
   return (
-    <div className="basket w-full justify-items-center">
+    <div className="basket w-5/6 justify-items-center">
         <h1 className="title-1">Özel Paketin</h1>
         <br />
 
@@ -24,6 +24,8 @@ const Basket = ({value}) => {
         />
 
         <Products value={value}></Products>
+
+        <br />
 
 
         <AddToBasketButton value={value}></AddToBasketButton>
