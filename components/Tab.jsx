@@ -7,7 +7,7 @@ import Box from '@mui/material/Box';
 import { Slider } from '@mui/material';
 import { useState, createContext, useContext } from 'react';
 
-
+import ProductSlider from './ProductSlider';
 
 
 function CustomTabPanel(props) {
@@ -24,7 +24,7 @@ function CustomTabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <div>{children}</div>
         </Box>
       )}
     </div>
@@ -77,12 +77,28 @@ export default function BasicTabs() {
       superPadCount,
       superPlusPadCount,
     ];
+    
+
+    const sliderValues = [
+        {
+            name : 'Standart Ped',
+            func : updateStandardPadCount,
+        },
+        {
+            name : 'Süper Ped',
+            func : updateSuperPadCount,
+        },
+        {
+            name : 'Süper+ Ped',
+            func : updateSuperPlusPadCount,
+        },
+    ];
 
 
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 0, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" className='justify-between'>
+        <Tabs value={value} onChange={handleChange} className='flex justify-between'>
           <Tab label="beije Ped"  />
           <Tab label="beije Günlük Ped" />
           <Tab label="beije Tampon" />
@@ -90,61 +106,9 @@ export default function BasicTabs() {
       </Box>
       <CustomTabPanel value={value} index={0}>
       <div>
-          <h1 className="title-2">Standart Ped</h1>
-          
-          <Slider
-              defaultValue={0}
-              onChange={updateStandardPadCount}
-              step={10}
-              marks
-              min={0}
-              max={60}
-              valueLabelDisplay="auto"
-              sx={{
-                color: '#000000',
-              }}
-            />
-            <div className="flex content-stretch justify-between">
-              <p>0</p>
-              <p>60</p>
-            </div>
-            
-            <h1 className="title-2">Süper Ped</h1>
-            <Slider
-              defaultValue={0}
-              onChange={updateSuperPadCount}
-              step={10}
-              marks
-              min={0}
-              max={60}
-              valueLabelDisplay="auto"
-              sx={{
-                color: '#000000',
-              }}
-            />
-            <div className="flex content-stretch justify-between">
-              <p>0</p>
-              <p>60</p>
-            </div>
-            <h1 className="title-2">Süper+ Ped</h1>
-            <Slider
-              defaultValue={0}
-              onChange={updateSuperPlusPadCount}
-              step={10}
-              marks
-              min={0}
-              max={60}
-              valueLabelDisplay="auto"
-              sx={{
-                color: '#000000',
-              }}
-            />
-            <div className="flex content-stretch justify-between">
-              <p>0</p>
-              <p>60</p>
-            </div>
-
-            
+          <ProductSlider value={sliderValues[0]}></ProductSlider>
+          <ProductSlider value={sliderValues[1]}></ProductSlider>
+          <ProductSlider value={sliderValues[2]}></ProductSlider>
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>

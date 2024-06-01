@@ -1,6 +1,6 @@
 import '@styles/globals.css';
 import Nav from '@components/Nav';
-
+import Footer from '@components/Footer';
 
 
 export const metadata = {
@@ -20,8 +20,11 @@ const RootLayout = ({children}) => {
           </main>
 
         </div>
-
+        
+        <Footer className='footer'/>
+      
       </body>
+
 
 
     </html>

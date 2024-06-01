@@ -142,6 +142,12 @@
   font-size: 18px;
 }
 
+.footer{
+  background-color: #1d1d1d;
+  height: 100px;
+  padding-top: 50px;
+  color: white;
+}
 .purchase-button{
   font-weight: bolder;
   height: 50px;
