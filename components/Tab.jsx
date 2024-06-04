@@ -1,18 +1,26 @@
+
+/*
+
+There are 3 tabs, each corresponding to a different category (Ped, Günlük Ped, Tampon).
+Each tab contains the corresponding slider components for the products.
+
+
+*/
+
+
+
+
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { Slider } from '@mui/material';
-import { useState, createContext, useContext } from 'react';
-
+import { useContext } from 'react';
+import { ValueContext } from './ValueContext';
 import ProductSlider from './ProductSlider';
-
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
-  
 
   return (
     <div
@@ -23,7 +31,7 @@ function CustomTabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ paddingTop: 7, color: 'black' }}>
           <div>{children}</div>
         </Box>
       )}
@@ -50,72 +58,73 @@ export default function BasicTabs() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const [standardPadCount, setStandardPadCount] = useState(0);
-    const [superPadCount, setSuperPadCount] = useState(0);
-    const [superPlusPadCount, setSuperPlusPadCount] = useState(0);
 
+  const {
+    standardPadCount, superPadCount, superPlusPadCount, dailyPadCount,
+    superDailyPadCount, miniTamponCount, standardTamponCount, superTamponCount,
+    setStandardPadCount, setSuperPadCount, setSuperPlusPadCount, setDailyPadCOunt,
+    setSuperDailyPadCount, setMiniTamponCount, setStandardTamponCount, setSuperTamponCount
+  } = useContext(ValueContext);
 
-  
-
-    const updateStandardPadCount = (e, newCount)=> {
-
-      setStandardPadCount(newCount);
-    };
-
-    const updateSuperPadCount = (e, newCount)=> {
-
-      setSuperPadCount(newCount);
-    };
-    const updateSuperPlusPadCount = (e, newCount)=> {
-
-      setSuperPlusPadCount(newCount);
-    };
-    const basketContext = createContext();
-
-    const allValues = [
-      standardPadCount,
-      superPadCount,
-      superPlusPadCount,
-    ];
-    
-
-    const sliderValues = [
-        {
-            name : 'Standart Ped',
-            func : updateStandardPadCount,
-        },
-        {
-            name : 'Süper Ped',
-            func : updateSuperPadCount,
-        },
-        {
-            name : 'Süper+ Ped',
-            func : updateSuperPlusPadCount,
-        },
-    ];
-
+  const sliderValues = [
+    { label: 'Standart Ped', count: standardPadCount, f: setStandardPadCount, maxCount: 60 },
+    { label: 'Süper Ped', count: superPadCount, f: setSuperPadCount, maxCount: 60 },
+    { label: 'Süper+ Ped', count: superPlusPadCount, f: setSuperPlusPadCount, maxCount: 60 },
+    { label: 'Günlük Ped', count: dailyPadCount, f: setDailyPadCOunt, maxCount: 100 },
+    { label: 'Süper Günlük Ped', count: superDailyPadCount, f: setSuperDailyPadCount, maxCount: 100 },
+    { label: 'Mini Tampon', count: miniTamponCount, f: setMiniTamponCount, maxCount: 60 },
+    { label: 'Standart Tampon', count: standardTamponCount, f: setStandardTamponCount, maxCount: 60 },
+    { label: 'Süper Tampon', count: superTamponCount, f: setSuperTamponCount, maxCount: 60 }
+  ];
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 0, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} className='flex justify-between'>
-          <Tab label="beije Ped"  />
-          <Tab label="beije Günlük Ped" />
-          <Tab label="beije Tampon" />
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          sx={{
+            '& .MuiTabs-flexContainer': {
+              justifyContent: 'space-between',
+            },
+            '& .MuiTab-root': {
+              flex: 1,
+              textTransform: 'none',
+              color: 'black'
+            },
+            '& .Mui-selected': {
+              color: 'black',
+              fontWeight: 'bold'
+            },
+            '& .MuiTabs-indicator': {
+              backgroundColor: 'black'
+            }
+          }}
+        >
+          <Tab label="beije Ped" {...a11yProps(0)} />
+          <Tab label="beije Günlük Ped" {...a11yProps(1)} />
+          <Tab label="beije Tampon" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-      <div>
+        <div>
           <ProductSlider value={sliderValues[0]}></ProductSlider>
           <ProductSlider value={sliderValues[1]}></ProductSlider>
           <ProductSlider value={sliderValues[2]}></ProductSlider>
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
+        <div>
+          <ProductSlider value={sliderValues[3]}></ProductSlider>
+          <ProductSlider value={sliderValues[4]}></ProductSlider>
+        </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Item Three
+        <div>
+          <ProductSlider value={sliderValues[5]}></ProductSlider>
+          <ProductSlider value={sliderValues[6]}></ProductSlider>
+          <ProductSlider value={sliderValues[7]}></ProductSlider>
+        </div>
       </CustomTabPanel>
     </Box>
   );

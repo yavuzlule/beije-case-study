@@ -1,4 +1,15 @@
-import { Box } from "@mui/material"
+/*
+
+Basket Component is put to show the total amount of products in the basket and the total price.
+
+It consists of two main components: 
+    1. Products
+    2. Add to basket button
+
+*/
+
+
+
 import Image from 'next/image'
 import Products from "./Products"
 import AddToBasketButton from "./AddToBasketButton"
@@ -23,7 +34,7 @@ const Basket = ({value}) => {
             alt="packet"
         />
 
-        <Products value={value}></Products>
+        <Products></Products>
 
         <br />
 

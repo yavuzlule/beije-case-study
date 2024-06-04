@@ -4,14 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
-  Note: The styles for this gradient grid background is heavily inspired by the creator of this amazing site (https://dub.sh) – all credits go to them! 
-*/
+/* Note: The styles for this gradient grid background is heavily inspired by the creator of this amazing site (https://dub.sh) – all credits go to them! */
 @font-face {
   font-family: 'Janna';
-  src: url('/../public/fonts/janna.TTF'),
-
+  src: url('/../public/fonts/janna.TTF');
 }
+
 .main {
   width: 100vw;
   min-height: 100vh;
@@ -22,58 +20,10 @@
   pointer-events: none;
 }
 
-.main:before {
-  background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
-  position: absolute;
-  content: "";
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  top: 0;
-}
-
-.main:after {
-  content: "";
-  background-image: url("/assets/images/grid.svg");
-  z-index: 1;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  opacity: 0.4;
-  filter: invert(1);
-}
-
-.gradient {
-  height: fit-content;
-  z-index: 3;
-  width: 100%;
-  max-width: 640px;
-  background-image: radial-gradient(
-      at 27% 37%,
-      hsla(215, 98%, 61%, 1) 0px,
-      transparent 0%
-    ),
-    radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 1) 0px, transparent 50%),
-    radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 1) 0px, transparent 50%),
-    radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 1) 0px, transparent 50%),
-    radial-gradient(at 97% 96%, hsla(38, 60%, 74%, 1) 0px, transparent 50%),
-    radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 1) 0px, transparent 50%),
-    radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 1) 0px, transparent 50%);
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  filter: blur(100px) saturate(150%);
-  top: 80px;
-  opacity: 0.15;
-}
-
 .beije {
   width: 100%;
   height: 100%;
   background-color: #f9f5f2;
-
 }
 
 .navbar {
@@ -90,23 +40,21 @@
   border-bottom: solid 1px var(--primary-color);
   opacity: 0.9;
   top: 0;
-
 }
 
 .home {
   font-family: 'Janna', sans-serif;
   padding: 10px;
-
 }
-.slider {
 
+.slider {
   color: black;
   background-color: black;
 }
 
 .basket {
   background-color: white;
-  margin: 0px 100px 0px 100px ;
+  margin: 0px 100px 0px 100px;
   padding: 40px;
   height: auto;
   border-radius: 25px;
@@ -117,83 +65,110 @@
   font-weight: bold;
 }
 
-.tag{
+.tag {
   margin: 0px 0px 10px 0px;
   padding: 15px;
   border-radius: 5px;
 }
-.title-2{
+
+.title-2 {
   font-size: 20px;
-  margin: 0 0px 0px 15px;
 }
 
-.title-3{
+.title-3 {
   font-size: 16px;
   margin: 0 0px 0px 15px;
 }
 
-
-.gray{
+.gray {
   color: #7e7e7e;
 }
 
-
-.description{
+.description {
   font-size: 18px;
 }
 
-.footer{
-  background-color: #1d1d1d;
-  height: 100px;
+.footer {
+  background-color: #2a2a2a;
+  height: auto;
   padding-top: 50px;
+  padding-bottom: 50px;
   color: white;
 }
-.purchase-button{
+
+.input-email {
+  background-color: #2a2a2a;
+  border: white solid;
+  border-radius: 5px;
+  border-width: 1px;
+  width: 50%;
+  height: 40px;
+}
+
+.purchase-button {
   font-weight: bolder;
   height: 50px;
-  border-radius:50px;
+  border-radius: 50px;
   background-color: rgb(56, 56, 56);
   color: white;
   align-items: center;
   margin-top: 20px;
 }
 
-.purchase-button-disabled{
-  font-weight:bolder;
+.purchase-button-disabled {
+  font-weight: bolder;
   height: 50px;
-  border-radius:50px;
+  border-radius: 50px;
   background-color: rgb(226, 226, 226);
   color: rgb(181, 181, 181);
   align-items: center;
   margin-top: 20px;
 }
+
 .products {
-  height:auto;
+  height: auto;
   margin-top: 20px;
   padding: 20px;
 }
+
+/* Responsive styles */
 @media screen and (max-width: 640px) {
   .main {
     padding: 0;
   }
+
+  .navbar {
+    padding: 0.7rem 1rem;
+    width: 100%;
+  }
+
+  .basket {
+    margin: 0px 20px 0px 20px;
+    padding: 20px;
+  }
+
+  .title-1 {
+    font-size: 24px;
+  }
+
+  .title-2 {
+    font-size: 16px;
+  }
+
+  .title-3 {
+    font-size: 14px;
+  }
+
+
 }
 
 /* Tailwind Styles */
-
 .app {
   @apply relative z-10 flex justify-center items-center flex-col w-4/5 mx-auto sm:px-16 px-6;
 }
 
 .desc {
   @apply mt-5 text-lg text-gray-600 sm:text-xl max-w-2xl;
-}
-
-.dropdown {
-  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2 justify-end items-end;
-}
-
-.dropdown_link {
-  @apply text-sm font-inter text-gray-700 hover:text-gray-500 font-medium;
 }
 
 .flex-center {
